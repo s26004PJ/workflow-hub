@@ -1,41 +1,2816 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Workflow Hub</title><style>
-:root{--n:#13233f;--b:#2563eb;--sky:#eaf2ff;--g:#15803d;--r:#b91c1c;--a:#b45309;--bg:#f5f7fb;--w:#fff;--l:#dbe2ea;--t:#172033;--m:#667085;--rad:14px}*{box-sizing:border-box}body{margin:0;font-family:Inter,"Noto Sans JP",system-ui,sans-serif;background:var(--bg);color:var(--t)}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.top{height:64px;background:var(--n);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:20}.brand{font-weight:800}.top-actions{display:flex;gap:8px;align-items:center}.top button{border:1px solid #ffffff40;background:#ffffff12;color:#fff;padding:8px 12px;border-radius:9px}.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#eef4ff,#f8fafc)}.auth{width:min(520px,100%);background:#fff;border:1px solid var(--l);border-radius:20px;padding:30px;box-shadow:0 18px 50px #10203b18}.auth h1{margin:0 0 6px}.auth>p{color:var(--m);margin:0 0 22px}.tabs{display:flex;background:#f1f5f9;padding:4px;border-radius:10px;margin-bottom:18px}.tabs button{flex:1;border:0;background:transparent;padding:10px;border-radius:8px}.tabs .active{background:#fff;box-shadow:0 1px 5px #0001;font-weight:700}label{display:block;font-weight:650;font-size:13px;margin:12px 0 6px}input,select,textarea{width:100%;border:1px solid var(--l);border-radius:9px;padding:10px 11px;background:#fff;color:var(--t)}textarea{min-height:90px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;border-radius:9px;padding:10px 14px;font-weight:700}.primary{background:var(--b);color:#fff}.secondary{background:#eef2f7;color:var(--t)}.danger{background:#fee2e2;color:var(--r)}.success{background:#dcfce7;color:var(--g)}.warning{background:#fef3c7;color:var(--a)}.auth .btn{width:100%;margin-top:16px}.msg{padding:10px 12px;border-radius:9px;margin:12px 0;font-size:13px}.msg.err{background:#fee2e2;color:#991b1b}.msg.ok{background:#dcfce7;color:#166534}.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 64px)}aside{background:#fff;border-right:1px solid var(--l);padding:16px;position:sticky;top:64px;height:calc(100vh - 64px)}nav button{width:100%;text-align:left;border:0;background:transparent;padding:11px 12px;border-radius:9px;margin:2px 0;color:#334155}nav button.active,nav button:hover{background:var(--sky);color:#1745a0;font-weight:700}.side-user{padding:12px;background:#f8fafc;border-radius:10px;margin-bottom:14px;font-size:13px}.content{padding:24px;max-width:1500px;width:100%;margin:auto}.page-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:18px}.page-head h2{margin:0 0 5px}.muted{color:var(--m)}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}.card{background:var(--w);border:1px solid var(--l);border-radius:var(--rad);padding:17px}.metric{font-size:27px;font-weight:800;margin-top:5px}.grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.table-wrap{overflow:auto;background:#fff;border:1px solid var(--l);border-radius:var(--rad)}table{width:100%;border-collapse:collapse;min-width:720px}th,td{padding:11px 12px;border-bottom:1px solid var(--l);text-align:left;font-size:13px;vertical-align:top}th{background:#f8fafc;font-size:12px;color:#475467}.status{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:800}.pending{background:#fef3c7;color:#92400e}.approved{background:#dcfce7;color:#166534}.rejected{background:#fee2e2;color:#991b1b}.actions{display:flex;flex-wrap:wrap;gap:6px}.actions .btn{padding:7px 9px;font-size:12px}.notice{border-left:4px solid var(--b);background:#eff6ff;padding:12px;border-radius:8px;margin:8px 0}.notice.unread{border-left-color:#ef4444;background:#fff7f7}.modal{position:fixed;inset:0;background:#0b122066;display:grid;place-items:center;padding:20px;z-index:50}.modal-box{background:#fff;border-radius:16px;width:min(760px,100%);max-height:90vh;overflow:auto;padding:22px}.modal-head{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#eef2f7;border-radius:50%;width:34px;height:34px}.form-section{border:1px solid var(--l);padding:14px;border-radius:11px;margin:12px 0}.tag{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;padding:4px 8px;font-size:11px;margin:2px}.empty{padding:30px;text-align:center;color:var(--m)}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.toolbar>*{max-width:260px}.small{font-size:12px}.danger-text{color:var(--r)}@media(max-width:900px){.layout{grid-template-columns:1fr}aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--l)}nav{display:flex;overflow:auto}nav button{min-width:max-content}.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}@media(max-width:600px){.top{padding:0 12px}.content{padding:15px}.cards{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}.auth{padding:22px}.user-name{display:none}}
-</style></head><body>
-<div id="loginScreen" class="login-wrap"><div style="position:fixed;top:18px;right:18px;z-index:30"><button class="btn secondary" onclick="toggleLang()" id="authLang">English</button></div><div class="auth"><h1 id="authTitle"></h1><p id="authSub"></p><div class="tabs"><button id="loginTab" onclick="showAuth('login')"></button><button id="regTab" onclick="showAuth('register')"></button></div><div id="authMsg"></div><form id="loginForm"><label id="lu"></label><input id="loginUser" required autocomplete="username"><label id="lp"></label><input id="loginPass" type="password" required autocomplete="current-password"><button class="btn primary" id="loginBtn"></button><div class="small muted" id="demo"></div></form><form id="registerForm" class="hidden"><div class="row"><div><label id="rn"></label><input id="rName" required></div><div><label id="ru"></label><input id="rUser" required></div></div><div class="row"><div><label id="rp"></label><input id="rPass" type="password" required></div><div><label id="rc"></label><input id="rPass2" type="password" required></div></div><label id="re"></label><input id="rEmail" type="email" required><div class="row"><div><label id="rd"></label><input id="rDept" required></div><div><label id="rpo"></label><input id="rPosition" required></div></div><label id="rr"></label><select id="rRole"><option value="employee"></option><option value="manager"></option></select><button class="btn primary" id="regBtn"></button></form></div></div>
-<div id="app" class="hidden"><header class="top"><div class="brand">WORKFLOW HUB</div><div class="top-actions"><span id="userBadge" class="user-name"></span><button onclick="toggleLang()" id="langBtn"></button><button onclick="logout()" id="logoutBtn"></button></div></header><div class="layout"><aside><div class="side-user"><b id="sideName"></b><br><span id="sideRole" class="muted"></span><br><span id="sideDept" class="muted"></span></div><nav id="nav"></nav></aside><main class="content" id="main"></main></div></div><div id="modal" class="modal hidden" onclick="if(event.target===this)closeModal()"><div class="modal-box" id="modalBox"></div></div>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Workflow Hub</title>
+
+<style>
+:root{
+  --navy:#13233f;
+  --blue:#2563eb;
+  --sky:#eaf2ff;
+  --green:#15803d;
+  --red:#b91c1c;
+  --amber:#b45309;
+  --bg:#f5f7fb;
+  --card:#fff;
+  --line:#dbe2ea;
+  --text:#172033;
+  --muted:#667085;
+  --radius:14px
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,"Noto Sans JP",system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text)
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+.top{
+  height:64px;
+  background:var(--navy);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  position:sticky;
+  top:0;
+  z-index:20
+}
+.brand{font-weight:800;letter-spacing:.02em}
+.top-actions{display:flex;gap:8px;align-items:center}
+.top button{
+  border:1px solid #ffffff40;
+  background:#ffffff12;
+  color:#fff;
+  padding:8px 12px;
+  border-radius:9px
+}
+
+.login-wrap{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:linear-gradient(135deg,#eef4ff,#f8fafc)
+}
+.auth{
+  width:min(460px,100%);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 18px 50px #10203b18
+}
+.auth h1{margin:0 0 6px}
+.auth p{color:var(--muted);margin:0 0 22px}
+
+.tabs{
+  display:flex;
+  background:#f1f5f9;
+  padding:4px;
+  border-radius:10px;
+  margin-bottom:18px
+}
+.tabs button{
+  flex:1;
+  border:0;
+  background:transparent;
+  padding:10px;
+  border-radius:8px
+}
+.tabs .active{
+  background:#fff;
+  box-shadow:0 1px 5px #0001;
+  font-weight:700
+}
+
+label{
+  display:block;
+  font-weight:650;
+  font-size:13px;
+  margin:12px 0 6px
+}
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:10px 11px;
+  background:#fff;
+  color:var(--text)
+}
+textarea{min-height:88px;resize:vertical}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:10px 14px;
+  font-weight:700
+}
+.primary{background:var(--blue);color:#fff}
+.secondary{background:#eef2f7;color:var(--text)}
+.danger{background:#fee2e2;color:var(--red)}
+.success{background:#dcfce7;color:var(--green)}
+.warning{background:#fef3c7;color:var(--amber)}
+.linkbtn{
+  border:0;
+  background:none;
+  color:var(--blue);
+  font-weight:700;
+  padding:5px
+}
+.auth .btn{width:100%;margin-top:16px}
+
+.msg{
+  padding:10px 12px;
+  border-radius:9px;
+  margin:12px 0;
+  font-size:13px
+}
+.msg.err{background:#fee2e2;color:#991b1b}
+.msg.ok{background:#dcfce7;color:#166534}
+
+.layout{
+  display:grid;
+  grid-template-columns:230px 1fr;
+  min-height:calc(100vh - 64px)
+}
+aside{
+  background:#fff;
+  border-right:1px solid var(--line);
+  padding:16px;
+  position:sticky;
+  top:64px;
+  height:calc(100vh - 64px)
+}
+nav button{
+  width:100%;
+  text-align:left;
+  border:0;
+  background:transparent;
+  padding:11px 12px;
+  border-radius:9px;
+  margin:2px 0;
+  color:#334155
+}
+nav button.active,
+nav button:hover{
+  background:var(--sky);
+  color:#1745a0;
+  font-weight:700
+}
+.side-user{
+  padding:12px;
+  background:#f8fafc;
+  border-radius:10px;
+  margin-bottom:14px;
+  font-size:13px
+}
+
+.content{
+  padding:24px;
+  max-width:1500px;
+  width:100%;
+  margin:auto
+}
+.page-head{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:flex-start;
+  margin-bottom:18px
+}
+.page-head h2{margin:0 0 5px}
+.muted{color:var(--muted)}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-bottom:18px
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:17px
+}
+.metric{
+  font-size:27px;
+  font-weight:800;
+  margin-top:5px
+}
+.grid2{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:16px
+}
+
+.table-wrap{
+  overflow:auto;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius)
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px
+}
+th,td{
+  padding:11px 12px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  font-size:13px;
+  vertical-align:top
+}
+th{
+  background:#f8fafc;
+  font-size:12px;
+  color:#475467
+}
+tr:last-child td{border-bottom:0}
+
+.status{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800
+}
+.pending{background:#fef3c7;color:#92400e}
+.approved{background:#dcfce7;color:#166534}
+.rejected{background:#fee2e2;color:#991b1b}
+.archived{background:#e5e7eb;color:#374151}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px
+}
+.actions .btn{
+  padding:7px 9px;
+  font-size:12px
+}
+.notice{
+  border-left:4px solid var(--blue);
+  background:#eff6ff;
+  padding:12px;
+  border-radius:8px;
+  margin:8px 0
+}
+.notice.unread{
+  border-left-color:#ef4444;
+  background:#fff7f7
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:#0b122066;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  z-index:50
+}
+.modal-box{
+  background:#fff;
+  border-radius:16px;
+  width:min(760px,100%);
+  max-height:90vh;
+  overflow:auto;
+  padding:22px
+}
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+.close{
+  border:0;
+  background:#eef2f7;
+  border-radius:50%;
+  width:34px;
+  height:34px
+}
+.form-section{
+  border:1px solid var(--line);
+  padding:14px;
+  border-radius:11px;
+  margin:12px 0
+}
+.form-section h4{margin:0 0 8px}
+.tag{
+  display:inline-block;
+  background:#eef2ff;
+  color:#3730a3;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:11px;
+  margin:2px
+}
+.empty{
+  padding:30px;
+  text-align:center;
+  color:var(--muted)
+}
+.toolbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:12px
+}
+.toolbar input,
+.toolbar select{
+  width:auto;
+  min-width:150px
+}
+.file-row{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  padding:8px 0;
+  border-bottom:1px solid var(--line)
+}
+.small{font-size:12px}
+.danger-text{color:var(--red)}
+
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  aside{
+    position:static;
+    height:auto;
+    border-right:0;
+    border-bottom:1px solid var(--line)
+  }
+  nav{
+    display:flex;
+    overflow:auto
+  }
+  nav button{min-width:max-content}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .grid2{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+  .top{padding:0 12px}
+  .content{padding:15px}
+  .cards{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:1fr}
+  .auth{padding:22px}
+  .page-head{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<div id="loginScreen" class="login-wrap">
+  <div class="auth">
+
+    <h1 id="authTitle">社内ワークフロー</h1>
+    <p id="authSub">Username と Password でログインしてください。</p>
+
+    <div class="tabs">
+      <button id="loginTab" class="active" onclick="showAuth('login')">
+        ログイン
+      </button>
+      <button id="regTab" onclick="showAuth('register')">
+        アカウントを作成
+      </button>
+    </div>
+
+    <div id="authMsg"></div>
+
+    <form id="loginForm">
+      <label>Username</label>
+      <input id="loginUser" autocomplete="username" required>
+
+      <label>Password</label>
+      <input id="loginPass" type="password" autocomplete="current-password" required>
+
+      <button class="btn primary">ログイン</button>
+
+      <div class="small muted" style="margin-top:15px">
+        Demo: employee / 1234　・　manager / 1234
+      </div>
+    </form>
+
+    <form id="registerForm" class="hidden">
+
+      <div class="row">
+        <div>
+          <label>氏名</label>
+          <input id="rName" required>
+        </div>
+        <div>
+          <label>Username</label>
+          <input id="rUser" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Password</label>
+          <input id="rPass" type="password" required>
+        </div>
+        <div>
+          <label>Password（確認）</label>
+          <input id="rPass2" type="password" required>
+        </div>
+      </div>
+
+      <label>Email</label>
+      <input id="rEmail" type="email" required>
+
+      <div class="row">
+        <div>
+          <label>部署</label>
+          <input id="rDept" required placeholder="営業部">
+        </div>
+        <div>
+          <label>役職</label>
+          <input id="rPosition" required placeholder="一般社員">
+        </div>
+      </div>
+
+      <label>アカウント種別</label>
+      <select id="rRole">
+        <option value="employee">Employee / 社員</option>
+        <option value="manager">Manager / 管理者</option>
+      </select>
+
+      <button class="btn primary">アカウントを作成</button>
+
+      <p class="small muted" style="margin-top:12px">
+        登録後は自動ログインせず、ログイン画面へ戻ります。
+      </p>
+    </form>
+
+  </div>
+</div>
+
+<div id="app" class="hidden">
+
+<header class="top">
+  <div class="brand">WORKFLOW HUB</div>
+
+  <div class="top-actions">
+    <span id="userBadge"></span>
+    <button onclick="toggleLang()" id="langBtn">English</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<div class="layout">
+
+<aside>
+  <div class="side-user">
+    <b id="sideName"></b><br>
+    <span id="sideRole" class="muted"></span><br>
+    <span id="sideDept" class="muted"></span>
+  </div>
+
+  <nav id="nav"></nav>
+</aside>
+
+<main class="content" id="main"></main>
+
+</div>
+</div>
+
+<div id="modal" class="modal hidden" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
 <script>
-const J={system:"社内ワークフロー",loginSub:"Username と Password でログインしてください。",registerSub:"社員・管理者アカウントを登録してください。",login:"ログイン",create:"アカウントを作成",username:"ユーザー名",password:"パスワード",confirm:"パスワード（確認）",name:"氏名",email:"Email",department:"部署",position:"役職",accountType:"アカウント種別",employee:"社員",manager:"管理者",demo:"デモ: employee / 1234 ・ manager / 1234",dashboard:"ダッシュボード",newApp:"新規申請",myApps:"自分の申請",approvals:"承認待ち",employees:"社員管理",history:"申請履歴",notifications:"通知",files:"ファイル管理",logout:"ログアウト",pending:"承認待ち",approved:"承認",rejected:"否決",all:"すべて",search:"検索",save:"保存",close:"閉じる",approve:"承認",reject:"否決",edit:"編集",archive:"アーカイブ",markRead:"既読にする",reason:"否決理由",submit:"申請する",type:"申請種別",created:"申請日時",amount:"金額",status:"状態",route:"承認経路",profile:"プロフィール",budget:"予算管理",approvedTotal:"承認済み合計",remaining:"残予算",noData:"データがありません",invalidCredentials:"ユーザー名またはパスワードが正しくありません。",registrationSuccess:"アカウントを作成しました。ログインしてください。",usernameTaken:"そのUsernameはすでに使用されています。",passwordMismatch:"Passwordが一致しません。",requiredError:"すべての必須項目を入力してください。",invalidEmail:"有効なEmailを入力してください。",reasonRequired:"否決理由を入力してください。",confirmArchive:"アーカイブしますか？"};
-const E={system:"Workflow Hub",loginSub:"Sign in with your username and password.",registerSub:"Register an employee or manager account.",login:"Login",create:"Create Account",username:"Username",password:"Password",confirm:"Confirm Password",name:"Name",email:"Email",department:"Department",position:"Position",accountType:"Account Type",employee:"Employee",manager:"Manager",demo:"Demo: employee / 1234 ・ manager / 1234",dashboard:"Dashboard",newApp:"New Request",myApps:"My Requests",approvals:"Approvals",employees:"Employees",history:"History",notifications:"Notifications",files:"Files",logout:"Logout",pending:"Pending",approved:"Approved",rejected:"Rejected",all:"All",search:"Search",save:"Save",close:"Close",approve:"Approve",reject:"Reject",edit:"Edit",archive:"Archive",markRead:"Mark as read",reason:"Rejection reason",submit:"Submit",type:"Request type",created:"Created",amount:"Amount",status:"Status",route:"Approval route",profile:"Profile",budget:"Budget",approvedTotal:"Approved total",remaining:"Remaining budget",noData:"No data",invalidCredentials:"Incorrect username or password.",registrationSuccess:"Account created successfully. Please log in.",usernameTaken:"That username is already in use.",passwordMismatch:"Passwords do not match.",requiredError:"Please complete all required fields.",invalidEmail:"Please enter a valid email.",reasonRequired:"Please enter a rejection reason.",confirmArchive:"Archive this request?"};
-let lang=localStorage.getItem("workflowHub_lang")||"ja",me=null,page="dashboard",apps=[],notifications=[],users=[],files=[],types=[];const t=k=>(lang==="ja"?J:E)[k]||J[k]||k,esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])),money=x=>"¥"+Number(x||0).toLocaleString(),fmt=x=>new Date(x).toLocaleString(lang==="ja"?"ja-JP":"en-US",{dateStyle:"medium",timeStyle:"short"}),typeObj=id=>types.find(x=>x.id===id)||{ja:id,en:id,route:[]},typeName=id=>typeObj(id)[lang],badge=s=>`<span class="status ${s}">${t(s)}</span>`;
-async function api(url,opt={}){let r=await fetch(url,{credentials:"same-origin",...opt}),d={};try{d=await r.json()}catch{}if(!r.ok)throw Error(d.error||r.status);return d}
-function authText(mode){document.documentElement.lang=lang;let a={authTitle:"system",authSub:mode==="login"?"loginSub":"registerSub",loginTab:"login",regTab:"create",lu:"username",lp:"password",rn:"name",ru:"username",rp:"password",rc:"confirm",re:"email",rd:"department",rpo:"position",rr:"accountType",loginBtn:"login",regBtn:"create",demo:"demo"};Object.entries(a).forEach(([id,k])=>{let e=document.getElementById(id);if(e)e.textContent=t(k)});rRole.options[0].text=t("employee");rRole.options[1].text=t("manager");authLang.textContent=lang==="ja"?"English":"日本語"}
-function showAuth(mode){loginForm.classList.toggle("hidden",mode!=="login");registerForm.classList.toggle("hidden",mode!=="register");loginTab.classList.toggle("active",mode==="login");regTab.classList.toggle("active",mode==="register");authText(mode);authMsg.innerHTML=""}
-function toggleLang(){lang=lang==="ja"?"en":"ja";localStorage.setItem("workflowHub_lang",lang);if(app.classList.contains("hidden"))authText(registerForm.classList.contains("hidden")?"login":"register");else{renderNav();render()}}
-loginForm.onsubmit=async e=>{e.preventDefault();try{let d=await api("/api/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username:loginUser.value.trim(),password:loginPass.value})});me=d.user;await loadData();openApp()}catch{authMsg.innerHTML=`<div class="msg err">${t("invalidCredentials")}</div>`}};
-registerForm.onsubmit=async e=>{e.preventDefault();let p={name:rName.value.trim(),username:rUser.value.trim(),password:rPass.value,email:rEmail.value.trim(),department:rDept.value.trim(),position:rPosition.value.trim(),role:rRole.value};if(!Object.values(p).every(Boolean))return authMsg.innerHTML=`<div class="msg err">${t("requiredError")}</div>`;if(p.password!==rPass2.value)return authMsg.innerHTML=`<div class="msg err">${t("passwordMismatch")}</div>`;if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email))return authMsg.innerHTML=`<div class="msg err">${t("invalidEmail")}</div>`;try{await api("/api/auth/register",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p)});showAuth("login");authMsg.innerHTML=`<div class="msg ok">${t("registrationSuccess")}</div>`}catch(e){authMsg.innerHTML=`<div class="msg err">${e.message==="USERNAME_TAKEN"?t("usernameTaken"):e.message}</div>`}};
-async function loadData(){let [a,n,ty,f]=await Promise.all([api("/api/applications"),api("/api/notifications"),api("/api/types"),api("/api/files")]);apps=a.applications;notifications=n.notifications;types=ty.types;files=f.files;if(me.role==="manager")users=(await api("/api/users")).users}
-function openApp(){loginScreen.classList.add("hidden");app.classList.remove("hidden");userBadge.textContent=me.name;sideName.textContent=me.name;sideRole.textContent=me.role==="manager"?t("manager"):t("employee");sideDept.textContent=me.department;renderNav();render()}
-async function logout(){try{await api("/api/auth/logout",{method:"POST"})}finally{location.reload()}}
-function renderNav(){let x=[["dashboard","dashboard"],["new","newApp"],["my","myApps"],["history","history"],["notifications","notifications"],["files","files"]];if(me.role==="manager")x.splice(3,0,["approvals","approvals"],["employees","employees"]);nav.innerHTML=x.map(([id,k])=>`<button class="${page===id?"active":""}" onclick="go('${id}')">${t(k)}${id==="notifications"?` (${notifications.filter(n=>!n.read_at).length})`:""}</button>`).join("");langBtn.textContent=lang==="ja"?"English":"日本語";logoutBtn.textContent=t("logout")}
-function go(p){page=p;renderNav();render()};function head(a,b=""){return `<div class="page-head"><div><h2>${a}</h2><div class="muted">${b}</div></div></div>`}
-function render(){({dashboard:dash,new:newReq,my:myReq,approvals:approvals,employees:employees,history:history,notifications:notifs,files:filePage}[page]||dash)()}
-function dash(){let mine=apps.filter(a=>a.applicant_id===me.id),pending=apps.filter(a=>a.status==="pending"),approved=apps.filter(a=>a.status==="approved"),total=approved.reduce((s,a)=>s+Number(a.amount||0),0),un=notifications.filter(n=>!n.read_at).length;main.innerHTML=head(t("dashboard"))+`<div class="cards"><div class="card"><div class="muted">${t("myApps")}</div><div class="metric">${mine.length}</div></div><div class="card"><div class="muted">${t("pending")}</div><div class="metric">${pending.length}</div></div><div class="card"><div class="muted">${t("approvedTotal")}</div><div class="metric">${money(total)}</div></div><div class="card"><div class="muted">${t("notifications")}</div><div class="metric">${un}</div></div></div><div class="grid2"><div class="card"><h3>${t("myApps")}</h3>${mine.slice(0,6).map(a=>`<div class="notice"><b>${esc(typeName(a.type))}</b> ${badge(a.status)}<br><span class="small muted">${fmt(a.created_at)}</span></div>`).join("")||`<div class="empty">${t("noData")}</div>`}</div><div class="card"><h3>${t("budget")}</h3><div class="metric">${money(total)}</div><p>${t("remaining")}: <b>${money(5000000-total)}</b></p></div></div>`}
-function newReq(){main.innerHTML=head(t("newApp"))+`<div class="card"><form id="af"><div class="form-section"><h4>${t("profile")}</h4><div class="row"><div><label>${t("name")}</label><input id="fName" value="${esc(me.name)}" required></div><div><label>${t("email")}</label><input id="fEmail" value="${esc(me.email||"")}"></div></div><div class="row"><div><label>${t("department")}</label><input id="fDept" value="${esc(me.department||"")}" required></div><div><label>${t("position")}</label><input id="fPos" value="${esc(me.position||"")}"></div></div></div><div class="form-section"><h4>${t("type")}</h4><select id="fType" onchange="drawFields()">${types.map(x=>`<option value="${x.id}">${esc(x[lang])}</option>`).join("")}</select><div id="dyn"></div></div><div class="form-section"><h4>${t("route")}</h4><div id="route"></div></div><button class="btn primary">${t("submit")}</button></form></div>`;drawFields();af.onsubmit=submit}
-function inp(id,label,type="text",req=false){return `<div><label>${label}${req?" *":""}</label><input id="v_${id}" type="${type}" ${req?"required":""}></div>`}
-function drawFields(){let id=fType.value,x=typeObj(id),s="";const L=(ja,en)=>lang==="ja"?ja:en;if(id==="expense")s=`<div class="row">${inp("purpose",L("用途","Purpose"),"text",true)}${inp("amount",t("amount"),"number",true)}</div>${inp("attachment",L("参考資料・添付情報","Reference / attachment"),"text",true)}`;if(id==="recruit")s=`<div class="row">${inp("office",L("採用予定オフィス","Planned office"),"text",true)}${inp("job",L("職種","Position"),"text",true)}</div>${inp("candidate",L("採用予定者氏名","Candidate name"),"text",true)}`;if(id==="loan")s=`<div class="row">${inp("date",L("融資希望日","Loan date"),"date",true)}${inp("amount",t("amount"),"number",true)}</div>${inp("repay",L("返済回数","Repayment count"),"number",true)}`;if(id==="referral")s=`<div class="row">${inp("candidate",L("紹介採用者氏名","Candidate name"),"text",true)}${inp("start",L("入社日","Start date"),"date",true)}</div>${inp("reward",L("報奨額","Reward"),"number",true)}`;if(id==="marriage"||id==="birth")s=`<div class="row">${inp("date",id==="marriage"?L("婚姻日","Marriage date"):L("出産日","Birth date"),"date",true)}${inp("documents",L("証明書類","Supporting documents"),"text",true)}</div>`;if(id==="cash")s=`<div class="row">${inp("customer",L("お客様名","Customer"),"text",true)}${inp("product",L("商品名","Product"),"text",true)}</div><div class="row">${inp("vendor",L("発注先","Vendor"),"text",true)}${inp("price",L("販売価格","Sales price"),"number",true)}</div><label>${L("支払方法","Payment method")}</label><select id="v_payment" required><option>振込</option><option>現金</option><option>口座引落</option><option>割賦（ビジネスローン）</option></select>`;if(id==="transfer")s=`<div class="row">${inp("target",L("対象者","Employee"),"text",true)}${inp("reason",L("理由","Reason"),"text",true)}</div>`;if(id==="consult")s=`${inp("destination",L("希望先","Preferred destination"),"text",true)}${inp("reason",L("理由","Reason"))}`;if(id==="training")s=`<div class="row">${inp("purpose",L("OFF-JT受講目的","OFF-JT purpose"),"text",true)}${inp("date",L("予定日","Planned date"),"date",true)}</div><div class="row">${inp("overnight",L("宿泊","Overnight"),"text",true)}${inp("people",L("人数","People"),"number",true)}</div>${inp("amount",L("予算額","Budget"),"number",true)}`;dyn.innerHTML=s;route.innerHTML=x.route.map((r,i)=>`<span class="tag">${i+1}. ${esc(r)}</span>`).join(" → ")}
-function collect(){let o={};document.querySelectorAll("#dyn input,#dyn select").forEach(e=>o[e.id.slice(2)]=e.value);return o}
-async function submit(e){e.preventDefault();let p=collect(),type=fType.value,amount=Number(p.amount||p.price||0);if(type==="loan"&&(amount>200000||Number(p.repay)>30))return alert(lang==="ja"?"社内融資は個人20万円・返済30回以内です。":"Loans are limited to ¥200,000 and 30 repayments.");try{await api("/api/applications",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type,payload:{...p,name:fName.value,email:fEmail.value,department:fDept.value,position:fPos.value},amount})});alert(lang==="ja"?"申請を送信しました。":"Request submitted.");await loadData();go("my")}catch(e){alert(e.message)}}
-function appTable(arr,manager=false){if(!arr.length)return `<div class="empty">${t("noData")}</div>`;return `<div class="table-wrap"><table><thead><tr><th>${t("type")}</th><th>${t("name")}</th><th>${t("department")}</th><th>${t("amount")}</th><th>${t("status")}</th><th>${t("created")}</th><th>Actions</th></tr></thead><tbody>${arr.map(a=>`<tr><td>${esc(typeName(a.type))}</td><td>${esc(a.applicant_name||"")}</td><td>${esc(a.department||"")}</td><td>${money(a.amount)}</td><td>${badge(a.status)}${a.rejection_reason?`<br><span class="small danger-text">${esc(a.rejection_reason)}</span>`:""}</td><td>${fmt(a.created_at)}</td><td><div class="actions"><button class="btn secondary" onclick="viewApp(${a.id})">${t("close")}</button>${manager&&a.status==="pending"?`<button class="btn success" onclick="approve(${a.id})">${t("approve")}</button><button class="btn danger" onclick="reject(${a.id})">${t("reject")}</button>`:""}${a.applicant_id===me.id&&a.status==="rejected"?`<button class="btn secondary" onclick="editRejected(${a.id})">${t("edit")}</button>`:""}<button class="btn warning" onclick="archiveApp(${a.id})">${t("archive")}</button></div></td></tr>`).join("")}</tbody></table></div>`}
-function myReq(){main.innerHTML=head(t("myApps"))+`<div class="toolbar"><input id="search" placeholder="${t("search")}" oninput="filterMy()"><select id="filter"><option value="">${t("all")}</option><option value="pending">${t("pending")}</option><option value="approved">${t("approved")}</option><option value="rejected">${t("rejected")}</option></select></div><div id="mt">${appTable(apps)}</div>`;filter.onchange=filterMy}
-function filterMy(){let q=(search?.value||"").toLowerCase(),s=filter?.value||"";mt.innerHTML=appTable(apps.filter(a=>(!s||a.status===s)&&(`${typeName(a.type)} ${a.applicant_name}`.toLowerCase().includes(q))))}
-function approvals(){main.innerHTML=head(t("approvals"))+`<div class="card">${appTable(apps.filter(a=>a.status==="pending"),true)}</div>`}
-function history(){main.innerHTML=head(t("history"))+`<div class="card">${appTable(apps)}</div>`}
-function employees(){main.innerHTML=head(t("employees"))+`<div class="card"><div class="toolbar"><input id="uq" placeholder="${t("search")}" oninput="filterUsers()"></div><div id="ut">${userTable(users)}</div></div>`}
-function userTable(a){return `<div class="table-wrap"><table><thead><tr><th>ID</th><th>${t("name")}</th><th>Username</th><th>${t("department")}</th><th>${t("position")}</th><th>${t("email")}</th><th>Role</th></tr></thead><tbody>${a.map(u=>`<tr><td>${esc(u.public_id)}</td><td>${esc(u.name)}</td><td>${esc(u.username)}</td><td>${esc(u.department)}</td><td>${esc(u.position)}</td><td>${esc(u.email)}</td><td>${esc(u.role)}</td></tr>`).join("")}</tbody></table></div>`}function filterUsers(){let q=(uq?.value||"").toLowerCase();ut.innerHTML=userTable(users.filter(u=>`${u.name} ${u.username} ${u.department} ${u.position}`.toLowerCase().includes(q)))}
-function notifs(){main.innerHTML=head(t("notifications"))+`<div class="card">${notifications.map(n=>`<div class="notice ${n.read_at?"":"unread"}"><b>${esc(n.title)}</b><br>${esc(n.body)}<br><span class="small muted">${fmt(n.created_at)}</span>${!n.read_at?` <button class="linkbtn" onclick="readN(${n.id})">${t("markRead")}</button>`:""}</div>`).join("")||`<div class="empty">${t("noData")}</div>`}</div>`}async function readN(id){await api(`/api/notifications/${id}/read`,{method:"POST"});await loadData();renderNav();render()}
-function filePage(){main.innerHTML=head(t("files"))+`<div class="card"><form id="ff"><input id="file" type="file" required><button class="btn primary">${t("save")}</button></form></div><div class="card" style="margin-top:14px">${files.map(f=>`<div class="notice"><b>${esc(f.original_name)}</b> — <a href="/uploads/${encodeURIComponent(f.stored_name)}" target="_blank">Open</a><br><span class="small muted">${esc(f.owner_name||"")} ・ ${fmt(f.created_at)}</span></div>`).join("")||`<div class="empty">${t("noData")}</div>`}</div>`;ff.onsubmit=uploadFile}async function uploadFile(e){e.preventDefault();let fd=new FormData();fd.append("file",file.files[0]);try{await api("/api/files",{method:"POST",body:fd});await loadData();filePage()}catch(e){alert(e.message)}}
-function viewApp(id){let a=apps.find(x=>x.id===id);if(!a)return;modalBox.innerHTML=`<div class="modal-head"><h3>${esc(typeName(a.type))}</h3><button class="close" onclick="closeModal()">×</button></div><p>${badge(a.status)}　<span class="muted">${fmt(a.created_at)}</span></p><div class="form-section"><b>${t("name")}</b><p>${esc(a.applicant_name||"")} / ${esc(a.department||"")} / ${esc(a.position||"")} / ${esc(a.email||"")}</p></div><div class="form-section">${Object.entries(a.payload||{}).map(([k,v])=>`<p><span class="muted">${esc(k)}</span><br>${esc(v)||"—"}</p>`).join("")}</div><div class="form-section"><b>${t("route")}</b><p>${typeObj(a.type).route.map((r,i)=>`${i+1}. ${esc(r)}`).join(" → ")}</p></div><div class="actions">${a.status==="pending"&&me.role==="manager"?`<button class="btn success" onclick="approve(${a.id})">${t("approve")}</button><button class="btn danger" onclick="reject(${a.id})">${t("reject")}</button>`:""}</div>`;modal.classList.remove("hidden")}function closeModal(){modal.classList.add("hidden")}
-async function approve(id){if(!confirm(lang==="ja"?"承認しますか？":"Approve this request?"))return;await api(`/api/applications/${id}/approve`,{method:"POST"});closeModal();await loadData();render()}async function reject(id){modalBox.innerHTML=`<div class="modal-head"><h3>${t("reject")}</h3><button class="close" onclick="closeModal()">×</button></div><label>${t("reason")}</label><textarea id="reason"></textarea><button class="btn danger" onclick="confirmReject(${id})">${t("reject")}</button>`;modal.classList.remove("hidden")}async function confirmReject(id){let r=reason.value.trim();if(!r)return alert(t("reasonRequired"));await api(`/api/applications/${id}/reject`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({reason:r})});closeModal();await loadData();render()}async function archiveApp(id){if(!confirm(t("confirmArchive")))return;await api(`/api/applications/${id}`,{method:"DELETE"});await loadData();render()}
-function editRejected(id){let a=apps.find(x=>x.id===id);modalBox.innerHTML=`<div class="modal-head"><h3>${t("edit")}</h3><button class="close" onclick="closeModal()">×</button></div>${Object.entries(a.payload||{}).map(([k,v])=>`<label>${esc(k)}</label><input data-ek="${esc(k)}" value="${esc(v)}">`).join("")}<button class="btn primary" onclick="saveEdit(${id})">${t("save")}</button>`;modal.classList.remove("hidden")}async function saveEdit(id){let p={};document.querySelectorAll("[data-ek]").forEach(e=>p[e.dataset.ek]=e.value);await api(`/api/applications/${id}`,{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({payload:p,amount:Number(p.amount||p.price||0)})});closeModal();await loadData();render()}
-(async()=>{authText("login");try{me=(await api("/api/me")).user;await loadData();openApp()}catch{}})();
-</script></body></html>
+"use strict";
+
+const KEY="workflowHub_v4";
+const SESSION="workflowHub_session_v4";
+
+const TYPES=[
+  {
+    id:"expense",
+    ja:"経費使用申請",
+    en:"Expense Use Request",
+    route:["上長","総務部長・経理部長（いずれか）","代表"]
+  },
+  {
+    id:"recruit",
+    ja:"採用申請",
+    en:"Recruitment Request",
+    route:["上長","代表"]
+  },
+  {
+    id:"loan",
+    ja:"社内融資申請",
+    en:"Internal Loan Request",
+    route:["上長","経理部長","代表","経理（振込）"]
+  },
+  {
+    id:"referral",
+    ja:"人材紹介申請",
+    en:"Employee Referral Request",
+    route:["総務部長","代表"]
+  },
+  {
+    id:"marriage",
+    ja:"結婚祝い申請",
+    en:"Marriage Celebration Request",
+    route:["総務部長","経理部長"]
+  },
+  {
+    id:"birth",
+    ja:"出産祝い申請",
+    en:"Birth Celebration Request",
+    route:["総務部長","経理部長"]
+  },
+  {
+    id:"cash",
+    ja:"現金販売申請",
+    en:"Cash Sales Request",
+    route:["営業統括部長","経理部長"]
+  },
+  {
+    id:"transfer",
+    ja:"転勤・転属申請",
+    en:"Transfer Request",
+    route:["所属部長","統括部長","総務部長","代表"]
+  },
+  {
+    id:"consult",
+    ja:"転勤・転属相談",
+    en:"Transfer Consultation",
+    route:["総務部長"]
+  },
+  {
+    id:"training",
+    ja:"研修申請",
+    en:"Training Request",
+    route:["上長","総務部長","代表"]
+  }
+];
+
+const TXT={
+  ja:{
+    dashboard:"ダッシュボード",
+    newApp:"新規申請",
+    myApps:"自分の申請",
+    approvals:"承認待ち",
+    employees:"社員管理",
+    history:"申請履歴",
+    notifications:"通知",
+    files:"ファイル管理",
+    settings:"設定",
+    logout:"ログアウト",
+    employee:"社員",
+    manager:"管理者",
+    pending:"承認待ち",
+    approved:"承認",
+    rejected:"否決",
+    archived:"アーカイブ",
+    all:"すべて",
+    search:"検索",
+    save:"保存",
+    cancel:"キャンセル",
+    close:"閉じる",
+    approve:"承認",
+    reject:"否決",
+    edit:"編集",
+    delete:"削除",
+    archive:"アーカイブ",
+    restore:"復元",
+    permanent:"完全削除",
+    markRead:"既読にする",
+    reason:"否決理由",
+    submit:"申請する",
+    name:"氏名",
+    department:"部署",
+    position:"役職",
+    email:"Email",
+    type:"申請種別",
+    created:"申請日時",
+    amount:"金額",
+    status:"状態",
+    route:"承認経路",
+    required:"必須",
+    optional:"任意",
+    profile:"プロフィール",
+    budget:"予算管理",
+    approvedTotal:"承認済み合計",
+    remaining:"残予算",
+    baseBudget:"基準予算",
+    noData:"データがありません",
+    notificationsHint:"未読通知は確認するまで残ります。",
+    confirmDelete:"本当に削除しますか？",
+    confirmPermanent:"完全削除すると復元できません。実行しますか？"
+  },
+
+  en:{
+    dashboard:"Dashboard",
+    newApp:"New Request",
+    myApps:"My Requests",
+    approvals:"Approvals",
+    employees:"Employees",
+    history:"History",
+    notifications:"Notifications",
+    files:"Files",
+    settings:"Settings",
+    logout:"Logout",
+    employee:"Employee",
+    manager:"Manager",
+    pending:"Pending",
+    approved:"Approved",
+    rejected:"Rejected",
+    archived:"Archived",
+    all:"All",
+    search:"Search",
+    save:"Save",
+    cancel:"Cancel",
+    close:"Close",
+    approve:"Approve",
+    reject:"Reject",
+    edit:"Edit",
+    delete:"Delete",
+    archive:"Archive",
+    restore:"Restore",
+    permanent:"Delete Permanently",
+    markRead:"Mark as read",
+    reason:"Rejection reason",
+    submit:"Submit",
+    name:"Name",
+    department:"Department",
+    position:"Position",
+    email:"Email",
+    type:"Request type",
+    created:"Created",
+    amount:"Amount",
+    status:"Status",
+    route:"Approval route",
+    required:"Required",
+    optional:"Optional",
+    profile:"Profile",
+    budget:"Budget",
+    approvedTotal:"Approved total",
+    remaining:"Remaining budget",
+    baseBudget:"Budget",
+    noData:"No data",
+    notificationsHint:"Unread notifications remain until reviewed.",
+    confirmDelete:"Delete this item?",
+    confirmPermanent:"Permanent deletion cannot be undone. Continue?"
+  }
+};
+
+let lang=localStorage.getItem("workflowHub_lang")||"ja";
+let db=loadDB();
+let session=null;
+let page="dashboard";
+
+function uid(prefix){
+  return prefix+"_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,7)
+}
+
+function loadDB(){
+
+  let d;
+
+  try{
+    d=JSON.parse(localStorage.getItem(KEY)||"null")
+  }catch(e){}
+
+  if(!d){
+    d={
+      users:[],
+      apps:[],
+      notifications:[],
+      files:[],
+      settings:{budget:5000000}
+    };
+  }
+
+  if(!d.users.length){
+    d.users=[
+      {
+        id:"U-DEMO-EMP",
+        name:"山田 太郎",
+        username:"employee",
+        password:"1234",
+        email:"employee@example.com",
+        department:"営業部",
+        position:"一般社員",
+        role:"employee",
+        created:Date.now()
+      },
+      {
+        id:"U-DEMO-MGR",
+        name:"佐藤 花子",
+        username:"manager",
+        password:"1234",
+        email:"manager@example.com",
+        department:"総務部",
+        position:"部長",
+        role:"manager",
+        created:Date.now()
+      }
+    ];
+  }
+
+  return d;
+}
+
+function persist(){
+  localStorage.setItem(KEY,JSON.stringify(db))
+}
+
+function t(k){
+  return TXT[lang][k]||TXT.ja[k]||k
+}
+
+function typeObj(id){
+  return TYPES.find(x=>x.id===id)||TYPES[0]
+}
+
+function typeName(id){
+  let x=typeObj(id);
+  return x[lang]
+}
+
+function current(){
+  return db.users.find(u=>u.id===session?.userId)
+}
+
+function fmtDate(x){
+  return new Date(x).toLocaleString(
+    lang==="ja"?"ja-JP":"en-US",
+    {dateStyle:"medium",timeStyle:"short"}
+  )
+}
+
+function money(x){
+  return "¥"+Number(x||0).toLocaleString()
+}
+
+function esc(x){
+  return String(x??"").replace(
+    /[&<>"']/g,
+    c=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[c])
+  )
+}
+
+function statusBadge(s){
+  return `<span class="status ${s}">${t(s)}</span>`
+}
+
+function notify(userId,title,body,kind="info"){
+  db.notifications.unshift({
+    id:uid("N"),
+    userId,
+    title,
+    body,
+    created:Date.now(),
+    read:false,
+    kind
+  });
+
+  persist()
+}
+
+function showAuth(mode){
+
+  document.getElementById("loginForm")
+    .classList.toggle("hidden",mode!=="login");
+
+  document.getElementById("registerForm")
+    .classList.toggle("hidden",mode!=="register");
+
+  document.getElementById("loginTab")
+    .classList.toggle("active",mode==="login");
+
+  document.getElementById("regTab")
+    .classList.toggle("active",mode==="register");
+
+  document.getElementById("authTitle").textContent=
+    mode==="login"?"社内ワークフロー":"アカウントを作成";
+
+  document.getElementById("authSub").textContent=
+    mode==="login"
+      ?"Username と Password でログインしてください。"
+      :"社員・管理者アカウントを登録してください。";
+
+  document.getElementById("authMsg").innerHTML="";
+}
+
+document.getElementById("loginForm").onsubmit=e=>{
+
+  e.preventDefault();
+
+  let u=document.getElementById("loginUser").value.trim();
+  let p=document.getElementById("loginPass").value;
+
+  let found=db.users.find(
+    x=>x.username.toLowerCase()===u.toLowerCase()&&
+       x.password===p
+  );
+
+  if(!found){
+    document.getElementById("authMsg").innerHTML=
+      `<div class="msg err">
+        Username または Password が正しくありません。
+      </div>`;
+    return
+  }
+
+  session={
+    userId:found.id,
+    role:found.role,
+    loginAt:Date.now()
+  };
+
+  localStorage.setItem(SESSION,JSON.stringify(session));
+  openApp()
+};
+
+document.getElementById("registerForm").onsubmit=e=>{
+
+  e.preventDefault();
+
+  let name=rName.value.trim();
+  let username=rUser.value.trim();
+  let p=rPass.value;
+  let p2=rPass2.value;
+  let email=rEmail.value.trim();
+  let dept=rDept.value.trim();
+  let pos=rPosition.value.trim();
+  let role=rRole.value;
+
+  if(!name||!username||!p||!p2||!email||!dept||!pos){
+    return regMsg("すべての必須項目を入力してください。")
+  }
+
+  if(
+    db.users.some(
+      u=>u.username.toLowerCase()===username.toLowerCase()
+    )
+  ){
+    return regMsg("そのUsernameはすでに使用されています。")
+  }
+
+  if(p!==p2){
+    return regMsg("Passwordが一致しません。")
+  }
+
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    return regMsg("有効なEmailを入力してください。")
+  }
+
+  db.users.push({
+    id:uid("U"),
+    name,
+    username,
+    password:p,
+    email,
+    department:dept,
+    position:pos,
+    role,
+    created:Date.now()
+  });
+
+  persist();
+  showAuth("login");
+
+  document.getElementById("authMsg").innerHTML=
+    `<div class="msg ok">
+      アカウントを作成しました。Username と Password でログインしてください。
+    </div>`;
+};
+
+function regMsg(s){
+  document.getElementById("authMsg").innerHTML=
+    `<div class="msg err">${esc(s)}</div>`
+}
+
+function openApp(){
+
+  document.getElementById("loginScreen")
+    .classList.add("hidden");
+
+  document.getElementById("app")
+    .classList.remove("hidden");
+
+  const u=current();
+
+  if(!u){
+    logout();
+    return
+  }
+
+  document.getElementById("userBadge").textContent=u.name;
+  document.getElementById("sideName").textContent=u.name;
+
+  document.getElementById("sideRole").textContent=
+    u.role==="manager"?t("manager"):t("employee");
+
+  document.getElementById("sideDept").textContent=u.department;
+
+  renderNav();
+  render()
+}
+
+function logout(){
+
+  session=null;
+  localStorage.removeItem(SESSION);
+
+  document.getElementById("app")
+    .classList.add("hidden");
+
+  document.getElementById("loginScreen")
+    .classList.remove("hidden");
+
+  showAuth("login");
+
+  document.getElementById("loginUser").value="";
+  document.getElementById("loginPass").value=""
+}
+
+function toggleLang(){
+
+  lang=lang==="ja"?"en":"ja";
+
+  localStorage.setItem("workflowHub_lang",lang);
+
+  renderNav();
+  render()
+}
+
+function renderNav(){
+
+  const items=[
+    ["dashboard","dashboard"],
+    ["new","newApp"],
+    ["my","myApps"],
+    ["history","history"],
+    ["notifications","notifications"],
+    ["files","files"]
+  ];
+
+  if(current().role==="manager"){
+    items.splice(
+      3,
+      0,
+      ["approvals","approvals"],
+      ["employees","employees"]
+    );
+  }
+
+  document.getElementById("nav").innerHTML=
+    items.map(([id,key])=>
+      `<button class="${page===id?'active':''}"
+        onclick="go('${id}')">
+        ${t(key)}
+        ${
+          id==="notifications"
+            ?` (${db.notifications.filter(
+                n=>n.userId===current().id&&!n.read
+              ).length})`
+            :""
+        }
+      </button>`
+    ).join("");
+
+  document.getElementById("langBtn").textContent=
+    lang==="ja"?"English":"日本語";
+}
+
+function go(p){
+  page=p;
+  renderNav();
+  render()
+}
+
+function render(){
+
+  try{
+
+    let m=document.getElementById("main");
+
+    ({
+      dashboard:renderDashboard,
+      new:renderNew,
+      my:renderMy,
+      approvals:renderApprovals,
+      employees:renderEmployees,
+      history:renderHistory,
+      notifications:renderNotifications,
+      files:renderFiles
+    }[page]||renderDashboard)(m)
+
+  }catch(e){
+
+    console.error(e);
+
+    document.getElementById("main").innerHTML=
+      `<div class="card">
+        <b>表示エラー</b>
+        <p class="muted">${esc(e.message)}</p>
+        <button class="btn secondary" onclick="render()">
+          再表示
+        </button>
+      </div>`
+  }
+}
+
+function head(title,sub,action=""){
+
+  return `
+    <div class="page-head">
+      <div>
+        <h2>${title}</h2>
+        <div class="muted">${sub||""}</div>
+      </div>
+      ${action}
+    </div>
+  `
+}
+
+function renderDashboard(m){
+
+  const u=current();
+
+  const mine=db.apps.filter(
+    a=>a.applicantId===u.id
+  );
+
+  const pending=db.apps.filter(
+    a=>a.status==="pending"&&!a.archived
+  );
+
+  const approved=db.apps.filter(
+    a=>a.status==="approved"
+  );
+
+  const total=approved.reduce(
+    (s,a)=>s+Number(a.amount||0),0
+  );
+
+  const unread=db.notifications.filter(
+    n=>n.userId===u.id&&!n.read
+  ).length;
+
+  m.innerHTML=
+    head(
+      t("dashboard"),
+      "申請・承認・通知を一つの画面で管理"
+    )+
+
+    `
+    <div class="cards">
+
+      <div class="card">
+        <div class="muted">${t("myApps")}</div>
+        <div class="metric">${mine.length}</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">${t("pending")}</div>
+        <div class="metric">${pending.length}</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">${t("approvedTotal")}</div>
+        <div class="metric">${money(total)}</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">${t("notifications")}</div>
+        <div class="metric">${unread}</div>
+      </div>
+
+    </div>
+
+    <div class="grid2">
+
+      <div class="card">
+        <h3>最近の申請</h3>
+        ${recentApps(mine.slice(0,6))}
+      </div>
+
+      <div class="card">
+        <h3>${t("budget")}</h3>
+        <p class="muted">指定期間の承認済み金額</p>
+
+        <div class="metric">${money(total)}</div>
+
+        <p>
+          ${t("remaining")}:
+          <b>${money(Number(db.settings.budget)-total)}</b>
+        </p>
+
+        <hr>
+
+        <p class="small muted">
+          承認済みデータは自動集計されます。
+        </p>
+      </div>
+
+    </div>
+    `
+}
+
+function recentApps(arr){
+
+  if(!arr.length){
+    return `<div class="empty">${t("noData")}</div>`
+  }
+
+  return arr.map(a=>
+    `<div class="notice">
+      <b>${esc(typeName(a.type))}</b>
+      ${statusBadge(a.status)}
+      <br>
+      <span class="small muted">
+        ${fmtDate(a.created)} ・ ${esc(a.applicantName)}
+      </span>
+    </div>`
+  ).join("")
+}
+
+function renderNew(m){
+
+  m.innerHTML=
+    head(
+      t("newApp"),
+      "ログイン中のプロフィールを初期値として入力します。"
+    )+
+
+    `
+    <div class="card">
+
+      <form id="appForm">
+
+        <div class="form-section">
+
+          <h4>申請者情報</h4>
+
+          <div class="row">
+
+            <div>
+              <label>${t("name")}</label>
+              <input id="fName"
+                value="${esc(current().name)}"
+                required>
+            </div>
+
+            <div>
+              <label>${t("email")}</label>
+              <input id="fEmail"
+                value="${esc(current().email)}">
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div>
+              <label>${t("department")}</label>
+              <input id="fDept"
+                value="${esc(current().department)}"
+                required>
+            </div>
+
+            <div>
+              <label>${t("position")}</label>
+              <input id="fPos"
+                value="${esc(current().position)}">
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="form-section">
+
+          <h4>申請内容</h4>
+
+          <label>${t("type")}</label>
+
+          <select id="fType"
+            onchange="drawFields()"
+            required>
+
+            ${TYPES.map(x=>
+              `<option value="${x.id}">
+                ${esc(x[lang])}
+              </option>`
+            ).join("")}
+
+          </select>
+
+          <div id="dynamicFields"></div>
+
+        </div>
+
+        <div class="form-section">
+
+          <h4>${t("route")}</h4>
+
+          <div id="routePreview"></div>
+
+        </div>
+
+        <button class="btn primary">
+          ${t("submit")}
+        </button>
+
+      </form>
+
+    </div>
+    `;
+
+  drawFields();
+
+  document.getElementById("appForm")
+    .onsubmit=submitApp
+}
+
+function drawFields(){
+
+  const id=document.getElementById("fType").value;
+  const x=typeObj(id);
+  const d=document.getElementById("dynamicFields");
+
+  let s="";
+
+  const inp=(
+    id,
+    label,
+    type="text",
+    req=false,
+    ph=""
+  )=>
+    `<div>
+      <label>${label}${req?" *":""}</label>
+      <input
+        id="v_${id}"
+        type="${type}"
+        ${req?"required":""}
+        placeholder="${ph}">
+    </div>`;
+
+  if(id==="expense"){
+    s=`
+      <div class="row">
+        ${inp("purpose","用途","text",true)}
+        ${inp("amount","金額","number",true)}
+      </div>
+      ${inp(
+        "attachment",
+        "参考資料・添付情報",
+        "text",
+        true,
+        "ファイル名等"
+      )}
+    `
+  }
+
+  if(id==="recruit"){
+    s=`
+      <div class="row">
+        ${inp("office","採用予定オフィス","text",true)}
+        ${inp("job","職種","text",true)}
+      </div>
+      ${inp("candidate","採用予定者氏名","text",true)}
+      ${inp(
+        "documents",
+        "履歴書・選考資料",
+        "text",
+        true,
+        "ファイル名等"
+      )}
+    `
+  }
+
+  if(id==="loan"){
+    s=`
+      <div class="row">
+        ${inp("date","融資希望日","date",true)}
+        ${inp("amount","希望金額","number",true)}
+      </div>
+
+      ${inp(
+        "repay",
+        "返済回数",
+        "number",
+        true,
+        "30回以内"
+      )}
+
+      <p class="small muted">
+        正社員・入社1年以上、個人上限20万円、
+        返済回数30回以内。年1%・給与天引き等の
+        制度条件を確認してください。
+      </p>
+    `
+  }
+
+  if(id==="referral"){
+    s=`
+      <div class="row">
+        ${inp("candidate","紹介採用者氏名","text",true)}
+        ${inp("start","入社日","date",true)}
+      </div>
+      ${inp("reward","報奨額","number",true)}
+    `
+  }
+
+  if(id==="marriage"){
+    s=`
+      <div class="row">
+        ${inp("date","婚姻日","date",true)}
+        ${inp(
+          "documents",
+          "証明書類",
+          "text",
+          true,
+          "婚姻届・住民票等"
+        )}
+      </div>
+    `
+  }
+
+  if(id==="birth"){
+    s=`
+      <div class="row">
+        ${inp("date","出産日","date",true)}
+        ${inp(
+          "documents",
+          "証明書類",
+          "text",
+          true,
+          "母子手帳・住民票等"
+        )}
+      </div>
+    `
+  }
+
+  if(id==="cash"){
+    s=`
+      <div class="row">
+        ${inp("customer","お客様名","text",true)}
+        ${inp("product","商品名","text",true)}
+      </div>
+
+      <div class="row">
+        ${inp("vendor","発注先","text",true)}
+        ${inp("price","販売価格","number",true)}
+      </div>
+
+      <div class="row">
+        ${inp("cost","仕切り価格","number",true)}
+        ${inp("profit","粗利","number",true)}
+      </div>
+
+      <div class="row">
+        ${inp("delivery","納品予定日","date",true)}
+        ${inp("paymentDate","支払予定日","date",true)}
+      </div>
+
+      <label>支払方法</label>
+
+      <select id="v_payment" required>
+        <option value="">選択</option>
+        <option>振込</option>
+        <option>現金</option>
+        <option>口座引落</option>
+        <option>割賦（ビジネスローン）</option>
+      </select>
+
+      ${inp(
+        "precheck",
+        "リース会社予審情報",
+        "text",
+        false,
+        "15万円以上は原則3社以上"
+      )}
+
+      ${inp("note","備考","text")}
+    `
+  }
+
+  if(id==="transfer"){
+    s=`
+      <div class="row">
+        ${inp("target","対象者","text",true)}
+        ${inp("reason","理由","text",true)}
+      </div>
+
+      <label>区分</label>
+
+      <select id="v_category" required>
+        <option>会社都合</option>
+        <option>個人希望</option>
+      </select>
+    `
+  }
+
+  if(id==="consult"){
+    s=`
+      ${inp("destination","希望先","text",true)}
+      ${inp("reason","理由","text",false)}
+    `
+  }
+
+  if(id==="training"){
+    s=`
+      <div class="row">
+        ${inp("purpose","OFF-JT受講目的","text",true)}
+        ${inp("date","予定日","date",true)}
+      </div>
+
+      <div class="row">
+        ${inp(
+          "overnight",
+          "宿泊",
+          "text",
+          true,
+          "あり / なし"
+        )}
+        ${inp("people","人数","number",true)}
+      </div>
+
+      ${inp("amount","予算額","number",true)}
+    `
+  }
+
+  d.innerHTML=s;
+
+  document.getElementById("routePreview").innerHTML=
+    x.route.map(
+      (r,i)=>
+        `<span class="tag">
+          ${i+1}. ${esc(r)}
+        </span>`
+    ).join(" → ");
+}
+
+function collectFields(){
+
+  const obj={};
+
+  document
+    .querySelectorAll(
+      "#dynamicFields input,#dynamicFields select,#dynamicFields textarea"
+    )
+    .forEach(el=>{
+      obj[
+        el.id.replace(/^v_/,"")
+      ]=el.value
+    });
+
+  return obj
+}
+
+function validateSpecial(type,v){
+
+  if(
+    type==="loan" &&
+    (
+      Number(v.amount)>200000 ||
+      Number(v.repay)>30
+    )
+  ){
+    return "社内融資は個人20万円・返済30回以内です。"
+  }
+
+  if(type==="cash"){
+
+    let p=Number(v.price);
+
+    if(
+      p<300000 &&
+      !["振込","現金","口座引落"].includes(v.payment)
+    ){
+      return "30万円未満の支払方法を確認してください。"
+    }
+
+    if(
+      p>=300000 &&
+      p<1000000 &&
+      !["振込","割賦（ビジネスローン）","口座引落"].includes(v.payment)
+    ){
+      return "30万〜100万円未満の支払方法を確認してください。"
+    }
+
+    if(
+      p>=1000000 &&
+      !["振込","割賦（ビジネスローン）"].includes(v.payment)
+    ){
+      return "100万円以上の支払方法を確認してください。"
+    }
+  }
+
+  return ""
+}
+
+function submitApp(e){
+
+  e.preventDefault();
+
+  const u=current();
+  const type=fType.value;
+  const v=collectFields();
+
+  const err=validateSpecial(type,v);
+
+  if(err){
+    alert(err);
+    return
+  }
+
+  let amount=Number(v.amount||v.price||0);
+
+  const a={
+    id:uid("A"),
+    applicantId:u.id,
+    applicantName:fName.value.trim(),
+    email:fEmail.value.trim(),
+    department:fDept.value.trim(),
+    position:fPos.value.trim(),
+    type,
+    data:v,
+    amount,
+    status:"pending",
+    created:Date.now(),
+    updated:Date.now(),
+    archived:false,
+    approvalIndex:0,
+    rejectionReason:""
+  };
+
+  db.apps.unshift(a);
+
+  db.users
+    .filter(x=>x.role==="manager")
+    .forEach(m=>
+      notify(
+        m.id,
+        "新しい承認依頼",
+        `${a.applicantName}さんの「${typeName(type)}」が承認待ちです。`,
+        "approval"
+      )
+    );
+
+  persist();
+
+  alert("申請を送信しました。承認者へ通知しました。");
+
+  go("my")
+}
+
+function appActions(a,manager=false){
+
+  let out=
+    `<button class="btn secondary"
+      onclick="viewApp('${a.id}')">
+      詳細
+    </button>`;
+
+  if(
+    manager &&
+    a.status==="pending" &&
+    !a.archived
+  ){
+    out+=
+      `<button class="btn success"
+        onclick="approveApp('${a.id}')">
+        ${t("approve")}
+      </button>
+
+      <button class="btn danger"
+        onclick="rejectApp('${a.id}')">
+        ${t("reject")}
+      </button>`;
+  }
+
+  if(
+    a.applicantId===current().id &&
+    !a.archived &&
+    (
+      a.status==="pending" ||
+      a.status==="rejected"
+    )
+  ){
+    out+=
+      `<button class="btn secondary"
+        onclick="editApp('${a.id}')">
+        ${t("edit")}
+      </button>`;
+  }
+
+  if(a.archived){
+    out+=
+      `<button class="btn secondary"
+        onclick="restoreApp('${a.id}')">
+        ${t("restore")}
+      </button>`;
+  }else{
+    out+=
+      `<button class="btn warning"
+        onclick="archiveApp('${a.id}')">
+        ${t("archive")}
+      </button>`;
+  }
+
+  if(a.archived){
+    out+=
+      `<button class="btn danger"
+        onclick="permDelete('${a.id}')">
+        ${t("permanent")}
+      </button>`;
+  }
+
+  return out
+}
+
+function renderMy(m){
+
+  m.innerHTML=
+    head(
+      t("myApps"),
+      "自分が作成した申請の状況・履歴"
+    )+
+
+    `
+    <div class="toolbar">
+
+      <input
+        id="mySearch"
+        placeholder="${t("search")}"
+        oninput="renderMyTable()">
+
+      <select
+        id="myStatus"
+        onchange="renderMyTable()">
+
+        <option value="">${t("all")}</option>
+        <option value="pending">${t("pending")}</option>
+        <option value="approved">${t("approved")}</option>
+        <option value="rejected">${t("rejected")}</option>
+
+      </select>
+
+    </div>
+
+    <div id="myTable"></div>
+    `;
+
+  renderMyTable()
+}
+
+function renderMyTable(){
+
+  const q=(
+    document.getElementById("mySearch")?.value||""
+  ).toLowerCase();
+
+  const s=
+    document.getElementById("myStatus")?.value||"";
+
+  let arr=db.apps.filter(
+    a=>
+      a.applicantId===current().id &&
+      !a.archived &&
+      (!s||a.status===s) &&
+      (
+        `${typeName(a.type)} ${a.applicantName}`
+      ).toLowerCase().includes(q)
+  );
+
+  document.getElementById("myTable").innerHTML=
+    table(arr,false)
+}
+
+function renderApprovals(m){
+
+  if(current().role!=="manager"){
+    return go("dashboard")
+  }
+
+  const arr=db.apps.filter(
+    a=>a.status==="pending"&&!a.archived
+  );
+
+  m.innerHTML=
+    head(
+      t("approvals"),
+      "承認者として対応が必要な申請"
+    )+
+
+    `
+    <div class="card">
+      <div id="approvalTable">
+        ${table(arr,true)}
+      </div>
+    </div>
+    `
+}
+
+function renderHistory(m){
+
+  let arr=db.apps.filter(a=>!a.archived);
+
+  if(current().role!=="manager"){
+    arr=arr.filter(
+      a=>a.applicantId===current().id
+    );
+  }
+
+  m.innerHTML=
+    head(
+      t("history"),
+      "期間・申請種別・申請者で検索できます"
+    )+
+
+    `
+    <div class="toolbar">
+
+      <input
+        id="hQ"
+        placeholder="${t("search")}"
+        oninput="historyTable()">
+
+      <select
+        id="hType"
+        onchange="historyTable()">
+
+        <option value="">${t("all")}</option>
+
+        ${TYPES.map(x=>
+          `<option value="${x.id}">
+            ${x[lang]}
+          </option>`
+        ).join("")}
+
+      </select>
+
+      <select
+        id="hStatus"
+        onchange="historyTable()">
+
+        <option value="">${t("all")}</option>
+        <option value="pending">${t("pending")}</option>
+        <option value="approved">${t("approved")}</option>
+        <option value="rejected">${t("rejected")}</option>
+
+      </select>
+
+    </div>
+
+    <div id="historyTable"></div>
+    `;
+
+  historyTable()
+}
+
+function historyTable(){
+
+  let arr=db.apps.filter(a=>!a.archived);
+
+  if(current().role!=="manager"){
+    arr=arr.filter(
+      a=>a.applicantId===current().id
+    );
+  }
+
+  const q=(
+    document.getElementById("hQ")?.value||""
+  ).toLowerCase();
+
+  const ty=
+    document.getElementById("hType")?.value||"";
+
+  const st=
+    document.getElementById("hStatus")?.value||"";
+
+  arr=arr.filter(
+    a=>
+      (!ty||a.type===ty) &&
+      (!st||a.status===st) &&
+      (
+        `${a.applicantName} ${a.department} ${typeName(a.type)}`
+      ).toLowerCase().includes(q)
+  );
+
+  document.getElementById("historyTable").innerHTML=
+    table(arr,current().role==="manager")
+}
+
+function table(arr,manager){
+
+  if(!arr.length){
+    return `<div class="empty">${t("noData")}</div>`
+  }
+
+  return `
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>${t("type")}</th>
+            <th>${t("name")}</th>
+            <th>${t("department")}</th>
+            <th>${t("amount")}</th>
+            <th>${t("status")}</th>
+            <th>${t("created")}</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          ${arr.map(a=>
+            `
+            <tr>
+
+              <td>
+                <b>${esc(typeName(a.type))}</b>
+              </td>
+
+              <td>${esc(a.applicantName)}</td>
+
+              <td>${esc(a.department)}</td>
+
+              <td>${money(a.amount)}</td>
+
+              <td>
+                ${statusBadge(a.status)}
+
+                ${
+                  a.rejectionReason
+                    ?`
+                    <br>
+                    <span class="small danger-text">
+                      ${esc(a.rejectionReason)}
+                    </span>
+                    `
+                    :""
+                }
+              </td>
+
+              <td>${fmtDate(a.created)}</td>
+
+              <td>
+                <div class="actions">
+                  ${appActions(a,manager)}
+                </div>
+              </td>
+
+            </tr>
+            `
+          ).join("")}
+
+        </tbody>
+
+      </table>
+
+    </div>
+  `
+}
+
+function viewApp(id){
+
+  const a=db.apps.find(x=>x.id===id);
+
+  if(!a)return;
+
+  document.getElementById("modalBox").innerHTML=
+    `
+    <div class="modal-head">
+
+      <h3>${esc(typeName(a.type))}</h3>
+
+      <button
+        class="close"
+        onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <p>
+      ${statusBadge(a.status)}
+      <span class="muted">
+        ${fmtDate(a.created)}
+      </span>
+    </p>
+
+    <div class="form-section">
+
+      <b>申請者</b>
+
+      <p>
+        ${esc(a.applicantName)}
+        /
+        ${esc(a.department)}
+        /
+        ${esc(a.position)}
+        /
+        ${esc(a.email)}
+      </p>
+
+    </div>
+
+    <div class="form-section">
+
+      <b>入力内容</b>
+
+      ${
+        Object.entries(a.data||{})
+          .map(
+            ([k,v])=>
+              `
+              <p>
+                <span class="muted">${esc(k)}</span>
+                <br>
+                ${esc(v)||"—"}
+              </p>
+              `
+          ).join("")
+      }
+
+    </div>
+
+    <div class="form-section">
+
+      <b>${t("route")}</b>
+
+      <p>
+        ${
+          typeObj(a.type).route
+            .map(
+              (r,i)=>
+                `${i+1}. ${esc(r)}`
+            ).join(" → ")
+        }
+      </p>
+
+    </div>
+
+    ${
+      a.rejectionReason
+        ?`
+        <div class="msg err">
+          <b>${t("reason")}</b>
+          <br>
+          ${esc(a.rejectionReason)}
+        </div>
+        `
+        :""
+    }
+
+    <div class="actions">
+      ${appActions(
+        a,
+        current().role==="manager"
+      )}
+    </div>
+    `;
+
+  document.getElementById("modal")
+    .classList.remove("hidden")
+}
+
+function closeModal(){
+  document.getElementById("modal")
+    .classList.add("hidden")
+}
+
+function approveApp(id){
+
+  const a=db.apps.find(x=>x.id===id);
+
+  if(
+    !a ||
+    current().role!=="manager"
+  )return;
+
+  a.status="approved";
+  a.updated=Date.now();
+  a.approverId=current().id;
+  a.approvalIndex=typeObj(a.type).route.length;
+
+  persist();
+
+  notify(
+    a.applicantId,
+    "申請が承認されました",
+    `「${typeName(a.type)}」が承認されました。`,
+    "result"
+  );
+
+  if(a.type==="loan"){
+    db.users
+      .filter(
+        x=>x.department.includes("経理")
+      )
+      .forEach(
+        x=>
+          notify(
+            x.id,
+            "振込担当への通知",
+            "社内融資の承認が完了しました。振込対応を確認してください。",
+            "payment"
+          )
+      );
+  }
+
+  persist();
+  closeModal();
+  render()
+}
+
+function rejectApp(id){
+
+  const a=db.apps.find(x=>x.id===id);
+
+  if(!a)return;
+
+  document.getElementById("modalBox").innerHTML=
+    `
+    <div class="modal-head">
+
+      <h3>${t("reject")}</h3>
+
+      <button
+        class="close"
+        onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <label>${t("reason")}</label>
+
+    <textarea
+      id="rejectReason"
+      required></textarea>
+
+    <button
+      class="btn danger"
+      style="margin-top:12px"
+      onclick="confirmReject('${id}')">
+
+      ${t("reject")}
+
+    </button>
+    `;
+
+  document.getElementById("modal")
+    .classList.remove("hidden")
+}
+
+function confirmReject(id){
+
+  const reason=
+    document.getElementById("rejectReason")
+      .value.trim();
+
+  if(!reason){
+    alert("否決理由を入力してください。");
+    return
+  }
+
+  const a=db.apps.find(x=>x.id===id);
+
+  if(!a)return;
+
+  a.status="rejected";
+  a.rejectionReason=reason;
+  a.updated=Date.now();
+
+  persist();
+
+  notify(
+    a.applicantId,
+    "申請が否決されました",
+    `「${typeName(a.type)}」を修正して再申請できます。理由: ${reason}`,
+    "result"
+  );
+
+  persist();
+  closeModal();
+  render()
+}
+
+function editApp(id){
+
+  const a=db.apps.find(x=>x.id===id);
+
+  if(
+    !a ||
+    a.applicantId!==current().id
+  )return;
+
+  document.getElementById("modalBox").innerHTML=
+    `
+    <div class="modal-head">
+
+      <h3>${t("edit")}</h3>
+
+      <button
+        class="close"
+        onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <p class="muted">
+      申請内容とプロフィール値は編集・消去できます。
+    </p>
+
+    <label>${t("name")}</label>
+    <input
+      id="eName"
+      value="${esc(a.applicantName)}">
+
+    <label>${t("email")}</label>
+    <input
+      id="eEmail"
+      value="${esc(a.email)}">
+
+    <label>${t("department")}</label>
+    <input
+      id="eDept"
+      value="${esc(a.department)}">
+
+    <label>${t("position")}</label>
+    <input
+      id="ePos"
+      value="${esc(a.position)}">
+
+    <div class="form-section">
+
+      ${
+        Object.entries(a.data||{})
+          .map(
+            ([k,v])=>
+              `
+              <label>${esc(k)}</label>
+              <input
+                data-ek="${esc(k)}"
+                value="${esc(v)}">
+              `
+          ).join("")
+      }
+
+    </div>
+
+    <button
+      class="btn primary"
+      onclick="saveEdit('${id}')">
+
+      ${t("save")}
+
+    </button>
+    `;
+
+  document.getElementById("modal")
+    .classList.remove("hidden")
+}
+
+function saveEdit(id){
+
+  const a=db.apps.find(x=>x.id===id);
+
+  if(!a)return;
+
+  a.applicantName=eName.value;
+  a.email=eEmail.value;
+  a.department=eDept.value;
+  a.position=ePos.value;
+
+  document
+    .querySelectorAll("[data-ek]")
+    .forEach(
+      el=>a.data[el.dataset.ek]=el.value
+    );
+
+  a.status="pending";
+  a.rejectionReason="";
+  a.updated=Date.now();
+
+  persist();
+
+  db.users
+    .filter(x=>x.role==="manager")
+    .forEach(
+      m=>
+        notify(
+          m.id,
+          "修正・再申請",
+          "修正された申請があります。",
+          "approval"
+        )
+    );
+
+  persist();
+  closeModal();
+  render()
+}
+
+function archiveApp(id){
+
+  const a=db.apps.find(x=>x.id===id);
+
+  if(!a)return;
+
+  if(!confirm("アーカイブしますか？"))return;
+
+  a.archived=true;
+  a.updated=Date.now();
+
+  persist();
+  render()
+}
+
+function restoreApp(id){
+
+  const a=db.apps.find(x=>x.id===id);
+
+  if(!a)return;
+
+  a.archived=false;
+  a.updated=Date.now();
+
+  persist();
+  render()
+}
+
+function permDelete(id){
+
+  if(!confirm(t("confirmPermanent")))return;
+
+  db.apps=db.apps.filter(
+    a=>a.id!==id
+  );
+
+  persist();
+  render()
+}
+
+function renderEmployees(m){
+
+  if(current().role!=="manager"){
+    return go("dashboard")
+  }
+
+  m.innerHTML=
+    head(
+      t("employees"),
+      "社員プロフィールを検索・確認できます"
+    )+
+
+    `
+    <div class="toolbar">
+
+      <input
+        id="empQ"
+        placeholder="${t("search")}"
+        oninput="employeeTable()">
+
+      <select
+        id="empRole"
+        onchange="employeeTable()">
+
+        <option value="">${t("all")}</option>
+        <option value="employee">${t("employee")}</option>
+        <option value="manager">${t("manager")}</option>
+
+      </select>
+
+    </div>
+
+    <div id="employeeTable"></div>
+    `;
+
+  employeeTable()
+}
+
+function employeeTable(){
+
+  const q=(
+    document.getElementById("empQ")?.value||""
+  ).toLowerCase();
+
+  const r=
+    document.getElementById("empRole")?.value||"";
+
+  const arr=db.users.filter(
+    u=>
+      (!r||u.role===r) &&
+      `${u.name} ${u.username} ${u.department} ${u.position}`
+        .toLowerCase()
+        .includes(q)
+  );
+
+  document.getElementById("employeeTable").innerHTML=
+    `
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>${t("name")}</th>
+            <th>Username</th>
+            <th>${t("department")}</th>
+            <th>${t("position")}</th>
+            <th>${t("email")}</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          ${
+            arr.map(u=>
+              `
+              <tr>
+
+                <td>${esc(u.id)}</td>
+                <td>${esc(u.name)}</td>
+                <td>${esc(u.username)}</td>
+                <td>${esc(u.department)}</td>
+                <td>${esc(u.position)}</td>
+                <td>${esc(u.email)}</td>
+                <td>${u.role}</td>
+
+                <td>
+                  <button
+                    class="btn secondary"
+                    onclick="editUser('${u.id}')">
+                    ${t("edit")}
+                  </button>
+                </td>
+
+              </tr>
+              `
+            ).join("")
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+    `
+}
+
+function editUser(id){
+
+  const u=db.users.find(x=>x.id===id);
+
+  if(!u)return;
+
+  document.getElementById("modalBox").innerHTML=
+    `
+    <div class="modal-head">
+
+      <h3>${t("profile")}</h3>
+
+      <button
+        class="close"
+        onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="row">
+
+      <div>
+        <label>${t("name")}</label>
+        <input
+          id="pName"
+          value="${esc(u.name)}">
+      </div>
+
+      <div>
+        <label>${t("email")}</label>
+        <input
+          id="pEmail"
+          value="${esc(u.email)}">
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div>
+        <label>${t("department")}</label>
+        <input
+          id="pDept"
+          value="${esc(u.department)}">
+      </div>
+
+      <div>
+        <label>${t("position")}</label>
+        <input
+          id="pPos"
+          value="${esc(u.position)}">
+      </div>
+
+    </div>
+
+    <label>Username</label>
+
+    <input
+      value="${esc(u.username)}"
+      disabled>
+
+    <button
+      class="btn primary"
+      style="margin-top:15px"
+      onclick="saveUser('${id}')">
+
+      ${t("save")}
+
+    </button>
+    `;
+
+  document.getElementById("modal")
+    .classList.remove("hidden")
+}
+
+function saveUser(id){
+
+  let u=db.users.find(x=>x.id===id);
+
+  if(!u)return;
+
+  u.name=pName.value;
+  u.email=pEmail.value;
+  u.department=pDept.value;
+  u.position=pPos.value;
+
+  persist();
+
+  if(u.id===current().id){
+    closeModal();
+    openApp();
+  }else{
+    closeModal();
+    render()
+  }
+}
+
+function renderNotifications(m){
+
+  let arr=db.notifications.filter(
+    n=>n.userId===current().id
+  );
+
+  m.innerHTML=
+    head(
+      t("notifications"),
+      t("notificationsHint"),
+      `<button
+        class="btn secondary"
+        onclick="markAllRead()">
+        ${t("markRead")}
+      </button>`
+    )+
+
+    `
+    <div class="card">
+
+      ${
+        arr.length
+          ?arr.map(
+            n=>
+              `
+              <div class="notice ${n.read?"":"unread"}">
+
+                <b>${esc(n.title)}</b>
+                <br>
+
+                ${esc(n.body)}
+
+                <br>
+
+                <span class="small muted">
+                  ${fmtDate(n.created)}
+                </span>
+
+                ${
+                  !n.read
+                    ?`
+                    <button
+                      class="linkbtn"
+                      onclick="readOne('${n.id}')">
+                      ${t("markRead")}
+                    </button>
+                    `
+                    :""
+                }
+
+              </div>
+              `
+          ).join("")
+          :`<div class="empty">${t("noData")}</div>`
+      }
+
+    </div>
+    `
+}
+
+function readOne(id){
+
+  let n=db.notifications.find(
+    x=>x.id===id
+  );
+
+  if(n)n.read=true;
+
+  persist();
+  renderNav();
+  render()
+}
+
+function markAllRead(){
+
+  db.notifications
+    .filter(
+      n=>n.userId===current().id
+    )
+    .forEach(
+      n=>n.read=true
+    );
+
+  persist();
+  renderNav();
+  render()
+}
+
+function renderFiles(m){
+
+  let mine=db.files.filter(
+    f=>
+      f.ownerId===current().id ||
+      current().role==="manager"
+  );
+
+  m.innerHTML=
+    head(
+      t("files"),
+      "添付情報・社内ファイルの整理。"
+    )+
+
+    `
+    <div class="card">
+
+      <form id="fileForm">
+
+        <div class="row">
+
+          <div>
+            <label>ファイル名</label>
+            <input id="fileName" required>
+          </div>
+
+          <div>
+            <label>説明</label>
+            <input id="fileDesc">
+          </div>
+
+        </div>
+
+        <button class="btn primary">
+          ${t("save")}
+        </button>
+
+      </form>
+
+    </div>
+
+    <div class="card" style="margin-top:14px">
+
+      ${
+        mine.length
+          ?mine.map(
+            f=>
+              `
+              <div class="file-row">
+
+                <div style="flex:1">
+
+                  <b>${esc(f.name)}</b>
+
+                  <br>
+
+                  <span class="small muted">
+                    ${esc(f.desc||"")}
+                    ・
+                    ${fmtDate(f.created)}
+                  </span>
+
+                </div>
+
+                ${
+                  f.archived
+                    ?`
+                    <button
+                      class="btn secondary"
+                      onclick="restoreFile('${f.id}')">
+                      ${t("restore")}
+                    </button>
+
+                    <button
+                      class="btn danger"
+                      onclick="deleteFile('${f.id}')">
+                      ${t("permanent")}
+                    </button>
+                    `
+                    :`
+                    <button
+                      class="btn warning"
+                      onclick="archiveFile('${f.id}')">
+                      ${t("archive")}
+                    </button>
+                    `
+                }
+
+              </div>
+              `
+          ).join("")
+          :`<div class="empty">${t("noData")}</div>`
+      }
+
+    </div>
+    `;
+
+  document.getElementById("fileForm")
+    .onsubmit=e=>{
+
+      e.preventDefault();
+
+      db.files.unshift({
+        id:uid("F"),
+        ownerId:current().id,
+        name:fileName.value,
+        desc:fileDesc.value,
+        created:Date.now(),
+        archived:false
+      });
+
+      persist();
+      renderFiles(m)
+    }
+}
+
+function archiveFile(id){
+
+  let f=db.files.find(x=>x.id===id);
+
+  if(f)f.archived=true;
+
+  persist();
+  render()
+}
+
+function restoreFile(id){
+
+  let f=db.files.find(x=>x.id===id);
+
+  if(f)f.archived=false;
+
+  persist();
+  render()
+}
+
+function deleteFile(id){
+
+  if(!confirm(t("confirmPermanent")))return;
+
+  db.files=db.files.filter(
+    x=>x.id!==id
+  );
+
+  persist();
+  render()
+}
+
+function startReminderCheck(){
+
+  const now=Date.now();
+  let changed=false;
+
+  db.apps
+    .filter(
+      a=>
+        a.status==="pending" &&
+        !a.archived
+    )
+    .forEach(a=>{
+
+      if(
+        now-a.created>=24*60*60*1000
+      ){
+
+        const managers=
+          db.users.filter(
+            u=>u.role==="manager"
+          );
+
+        managers.forEach(m=>{
+
+          const exists=
+            db.notifications.some(
+              n=>
+                n.userId===m.id &&
+                n.kind==="reminder" &&
+                n.body.includes(a.id) &&
+                now-n.created<20*60*60*1000
+            );
+
+          if(!exists){
+
+            db.notifications.unshift({
+              id:uid("N"),
+              userId:m.id,
+              title:"承認リマインド",
+              body:
+                `申請ID ${a.id} の承認が滞留しています。「${typeName(a.type)}」を確認してください。`,
+              created:now,
+              read:false,
+              kind:"reminder"
+            });
+
+            changed=true
+          }
+        })
+      }
+    });
+
+  if(changed)persist()
+}
+
+(function init(){
+
+  try{
+
+    let s=
+      JSON.parse(
+        localStorage.getItem(SESSION)||"null"
+      );
+
+    if(
+      s &&
+      db.users.some(
+        u=>u.id===s.userId
+      )
+    ){
+
+      session=s;
+      openApp();
+      startReminderCheck()
+
+    }else{
+
+      logout()
+    }
+
+  }catch(e){
+
+    console.error(e);
+    logout()
+  }
+
+})();
+</script>
+
+</body>
+</html>
